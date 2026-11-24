@@ -155,6 +155,10 @@ footer { margin-top: var(--between); }
 .total { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid #000; font-size: 22px; font-weight: 600; }
 .pay { display: block; width: 100%; margin-top: 14px; padding: 12px; border: 1px solid #ccc; background: #eee; color: #777; cursor: not-allowed !important; }
 .send { display: block; margin-top: 10px; padding: 12px; text-align: center; background: #000; color: #fff; text-decoration: none; font-weight: 500; }
+.how { margin-top: 20px; }
+.how h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+.how ol { padding-left: 1.3em; }
+.how li { margin-top: 6px; padding-left: 4px; }
 .send:hover { background: var(--sky); color: #000; }
 .custom { margin-top: 20px; padding-top: 18px; border-top: 1px solid #ddd; }
 

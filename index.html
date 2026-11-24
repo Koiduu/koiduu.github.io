@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body id="top">
 
@@ -317,7 +317,7 @@
 <dialog class="hire-box" id="hire" aria-labelledby="hire-title">
   <form method="dialog"><button class="x">Close</button></form>
   <h2 id="hire-title">Hire me</h2>
-  <p class="maint" role="status">Online payment is in maintenance for now. Build your order below and send it to me by email. Once I confirm it, pay by Interac e-Transfer (Canada only) to koidusupport@gmail.com. Other payment options are coming soon.</p>
+  <p class="maint" role="status">Online card payment is in maintenance for now. You can order by email and pay by Interac e-Transfer (Canada only). Other payment options are coming soon.</p>
   <ul class="tiers">
     <li><span class="size">32x32</span><span class="price">$39</span><button type="button" class="add" data-size="32x32" data-price="39">Add</button></li>
     <li><span class="size">72x72</span><span class="price">$59</span><button type="button" class="add" data-size="72x72" data-price="59">Add</button></li>
@@ -330,6 +330,15 @@
     <p class="total"><span>Total</span><span id="total">$0</span></p>
     <button type="button" class="pay" disabled>Pay online: in maintenance</button>
     <a class="send" id="send" href="mailto:koidusupport@gmail.com">Send order by email</a>
+  </div>
+  <div class="how">
+    <h3>How ordering works</h3>
+    <ol>
+      <li>Add your maps above and press <b>Send order by email</b>.</li>
+      <li>I reply to confirm the price, what is included and when it will be ready.</li>
+      <li>Pay by Interac e-Transfer (Canada only). In your banking app, add a recipient named <b>Koidu</b> with the email <b>koidusupport@gmail.com</b>.</li>
+      <li>I start once the payment arrives and send you updates as I build.</li>
+    </ol>
   </div>
   <p class="custom"><strong>Custom organic builds:</strong> send me a private message by email <a href="mailto:koidusupport@gmail.com">koidusupport@gmail.com</a> or on Discord (<b>koiduu</b>).</p>
 </dialog>
