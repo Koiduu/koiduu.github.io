@@ -133,7 +133,7 @@ footer { margin-top: var(--between); }
 .hire-box { border: 0; padding: clamp(24px, 3vw, 40px); width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: #fff; color: #000; margin: auto; }
 .hire-box::backdrop { background: rgba(0, 0, 0, .45); }
 .hire-box h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 600; letter-spacing: -.02em; }
-.hire-box form { position: absolute; top: 12px; right: 12px; }
+.hire-box form[method=dialog] { position: absolute; top: 12px; right: 12px; }
 .hire-box .x { font: inherit; color: #000; background: none; border: 0; padding: 8px 12px; cursor: pointer; text-decoration: underline; text-underline-offset: .18em; }
 .maint { margin-top: 12px; padding: 10px 14px; background: var(--haze); }
 .cur { margin-top: 12px; color: var(--grey); }
@@ -155,7 +155,18 @@ footer { margin-top: var(--between); }
 .items .drop { grid-column: 1 / -1; justify-self: start; background: none; border: 0; padding: 0; color: var(--grey); text-decoration: underline; font-size: 15px; }
 .total { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid #000; font-size: 22px; font-weight: 600; }
 .pay { display: block; width: 100%; margin-top: 14px; padding: 12px; border: 1px solid #ccc; background: #eee; color: #777; cursor: not-allowed !important; }
-.send { display: block; margin-top: 10px; padding: 12px; text-align: center; background: #000; color: #fff; text-decoration: none; font-weight: 500; }
+.send-form { margin-top: 14px; }
+.send-form label { display: block; margin-top: 10px; font-weight: 500; }
+.send-form .opt { font-weight: 400; color: var(--grey); }
+.send-form input[type=email], .send-form textarea { display: block; width: 100%; margin-top: 4px; padding: 10px; font: inherit; color: #000; background: #fff; border: 1px solid #aab; border-radius: 0; }
+.send-form textarea { resize: vertical; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.send { display: block; width: 100%; margin-top: 12px; padding: 12px; border: 0; text-align: center; background: #000; color: #fff; text-decoration: none; font-weight: 500; }
+.send:disabled { opacity: .6; cursor: wait; }
+.status { margin-top: 10px; min-height: 1.45em; }
+.status.ok { color: #0a6b2d; font-weight: 500; }
+.status.err { color: #b00020; }
+.alt { margin-top: 8px; font-size: 15px; color: var(--grey); }
 .how { margin-top: 20px; }
 .how h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
 .how ol { padding-left: 1.3em; }

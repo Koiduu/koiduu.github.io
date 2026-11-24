@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=15">
 </head>
 <body id="top">
 
@@ -330,13 +330,24 @@
     <ul class="items"></ul>
     <p class="total"><span>Total (CAD)</span><span id="total">$0</span></p>
     <button type="button" class="pay" disabled>Pay online: in maintenance</button>
-    <a class="send" id="send" href="mailto:koidusupport@gmail.com">Send order by email</a>
+    <form class="send-form" id="order-form" novalidate>
+      <label>Your email
+        <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </label>
+      <label>Anything else? <span class="opt">(optional: Discord name, details)</span>
+        <textarea name="note" rows="3" maxlength="1000"></textarea>
+      </label>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="send">Send order</button>
+      <p class="status" role="status"></p>
+      <p class="alt">Prefer your own email app? <a id="mailto" href="mailto:koidusupport@gmail.com">Send it that way</a></p>
+    </form>
   </div>
   <div class="how">
     <h3>How ordering works</h3>
     <ol>
-      <li>Add your maps above and press <b>Send order by email</b>.</li>
-      <li>I reply to confirm the price, what is included and when it will be ready.</li>
+      <li>Add your maps above, enter your email and press <b>Send order</b>.</li>
+      <li>I reply to your email to confirm the price, what is included and when it will be ready.</li>
       <li>Pay by Interac e-Transfer (Canada only). In your banking app, add a recipient named <b>Koidu</b> with the email <b>koidusupport@gmail.com</b>. Send the total in CAD.</li>
       <li>I start once the payment arrives and send you updates as I build.</li>
     </ol>

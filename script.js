@@ -43,7 +43,11 @@ const tiers = [...hire.querySelectorAll('.add')].map(b => ({ size: b.dataset.siz
 cart = Object.fromEntries(tiers.filter(t => Number.isInteger(cart[t.size]) && cart[t.size] > 0).map(t => [t.size, Math.min(cart[t.size], 20)]));
 const list = hire.querySelector('.items');
 const empty = hire.querySelector('.empty');
-const send = hire.querySelector('#send');
+const mailLink = hire.querySelector('#mailto');
+const form = hire.querySelector('#order-form');
+const statusEl = hire.querySelector('.status');
+const orderEndpoint = 'https://formsubmit.co/ajax/koidusupport@gmail.com';
+let order = { lines: [], total: 0, count: 0 };
 
 function el(tag, props = {}, data = {}) {
   const node = Object.assign(document.createElement(tag), props);
@@ -77,6 +81,7 @@ function render() {
     );
     list.append(li);
   }
+  order = { lines, total, count };
   empty.hidden = count > 0;
   hire.querySelector('#total').textContent = `$${total}`;
   document.querySelectorAll('.cart .count').forEach(c => { c.textContent = count; c.hidden = !count; });
@@ -84,9 +89,9 @@ function render() {
   const mail = 'mailto:koidusupport@gmail.com';
   if (count) {
     const body = `Hi Koidu, I would like to order:\n\n${lines.join('\n')}\n\nTotal: $${total} CAD\n\n`;
-    send.href = `${mail}?subject=${encodeURIComponent('Map order')}&body=${encodeURIComponent(body)}`;
+    mailLink.href = `${mail}?subject=${encodeURIComponent('Map order')}&body=${encodeURIComponent(body)}`;
   } else {
-    send.href = mail;
+    mailLink.href = mail;
   }
 }
 
@@ -105,4 +110,45 @@ document.querySelectorAll('[data-hire]').forEach(a => a.addEventListener('click'
   e.preventDefault();
   hire.showModal();
 }));
+
+// Send the order straight to Koidu's inbox
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const data = new FormData(form);
+  if (data.get('_honey')) return;
+  if (!order.count) { statusEl.textContent = 'Add at least one map first.'; statusEl.className = 'status err'; return; }
+  const email = form.elements.email;
+  if (!email.value.trim() || !email.checkValidity()) { statusEl.textContent = 'Please enter a valid email so I can reply.'; statusEl.className = 'status err'; email.focus(); return; }
+  const button = form.querySelector('button[type=submit]');
+  button.disabled = true;
+  statusEl.className = 'status';
+  statusEl.textContent = 'Sending…';
+  try {
+    const res = await fetch(orderEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `Map order: $${order.total} CAD`,
+        _template: 'table',
+        _captcha: 'false',
+        email: data.get('email'),
+        order: order.lines.join(' | '),
+        total: `$${order.total} CAD`,
+        note: data.get('note') || '(none)'
+      })
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || out.success === false || out.success === 'false') throw new Error('send failed');
+    statusEl.className = 'status ok';
+    statusEl.textContent = `Order sent. I will reply to ${data.get('email')} soon.`;
+    cart = {};
+    render();
+    form.reset();
+  } catch {
+    statusEl.className = 'status err';
+    statusEl.textContent = 'Sorry, that did not send. Please email me at koidusupport@gmail.com instead.';
+  } finally {
+    button.disabled = false;
+  }
+});
 render();
