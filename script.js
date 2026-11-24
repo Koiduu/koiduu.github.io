@@ -61,7 +61,7 @@ function render() {
     if (!q) continue;
     total += q * t.price;
     count += q;
-    lines.push(`${q} x ${t.size} map ($${q * t.price} USD)`);
+    lines.push(`${q} x ${t.size} map ($${q * t.price} CAD)`);
     const qty = el('span', { className: 'qty' });
     qty.append(
       el('button', { type: 'button', textContent: '−', ariaLabel: `One less ${t.size}` }, { act: 'dec', size: t.size }),
@@ -83,7 +83,7 @@ function render() {
   document.querySelectorAll('.cart').forEach(c => c.setAttribute('aria-label', count ? `Open cart, ${count} items` : 'Open cart'));
   const mail = 'mailto:koidusupport@gmail.com';
   if (count) {
-    const body = `Hi Koidu, I would like to order:\n\n${lines.join('\n')}\n\nTotal: $${total} USD\n\n`;
+    const body = `Hi Koidu, I would like to order:\n\n${lines.join('\n')}\n\nTotal: $${total} CAD\n\n`;
     send.href = `${mail}?subject=${encodeURIComponent('Map order')}&body=${encodeURIComponent(body)}`;
   } else {
     send.href = mail;
