@@ -32,7 +32,17 @@ nav {
 nav a, .index a { text-decoration: none; }
 nav a:hover, .index a:hover { text-decoration: underline; }
 nav span { display: flex; gap: clamp(16px, 2vw, 34px); }
-.name { font-weight: 600; }
+.name { font-weight: 600; display: inline-flex; align-items: center; gap: 10px; }
+.name img { width: 28px; height: 24px; image-rendering: pixelated; }
+
+/* Hire button, always on screen */
+.hire {
+  position: fixed; right: var(--pad); bottom: var(--pad); z-index: 5;
+  background: #000; color: #fff; padding: 12px 22px; font-weight: 500; text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+}
+.hire:hover { background: var(--sky); color: #000; text-decoration: none; }
+.hire:focus-visible { outline-color: var(--sky); }
 /* own white background, so dark mode add-ons cannot leave pale text on the white photo */
 .intro, .index { position: absolute; top: 49.5%; background: #fff; }
 .intro { left: var(--pad); width: 34%; }
@@ -62,6 +72,13 @@ nav span { display: flex; gap: clamp(16px, 2vw, 34px); }
 .project { margin-top: var(--between); scroll-margin-top: 24px; }
 .project > .text { padding: 22px var(--pad) clamp(32px, 4vw, 64px); display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: auto 1fr; column-gap: var(--gap); }
 .project > .text > .note { grid-column: 2; grid-row: 1 / span 2; max-width: 56ch; font-size: clamp(18px, 1.35vw, 22px); }
+/* Mining lobby: title sits on top of the picture */
+.shot { position: relative; }
+.shot .over { position: absolute; top: clamp(14px, 2.4vw, 44px); left: var(--pad); pointer-events: none; }
+.shot .over h2 { font-size: clamp(28px, 3.4vw, 64px); font-weight: 600; letter-spacing: -.02em; }
+.shot .over .facts { color: #000; margin-top: .2em; }
+#mining > .text { padding-top: 22px; }
+.label { padding: 0 var(--pad) 22px; color: var(--grey); }
 .row { display: flex; gap: var(--gap); padding: 0 var(--pad); }
 .row + .row { margin-top: var(--gap); }
 .row > * { flex: var(--r) 1 0; min-width: 0; }
@@ -100,7 +117,8 @@ footer { margin-top: var(--between); }
 .sky h2 { font-size: clamp(36px, 5.4vw, 100px); line-height: 1; letter-spacing: -.03em; }
 .sky p { margin-top: 1em; font-size: clamp(20px, 1.7vw, 28px); }
 .sky button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: copy; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
-.links { padding: 22px var(--pad); display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.contact { padding: 22px var(--pad) 0; font-size: clamp(18px, 1.3vw, 23px); }
+.links { padding: 22px var(--pad) 96px; display: flex; flex-wrap: wrap; gap: 8px 28px; }
 .links a:last-child { margin-left: auto; }
 
 /* Full size picture */
