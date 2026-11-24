@@ -1,5 +1,5 @@
 // Click a picture to see it full size
-const box = document.querySelector('dialog');
+const box = document.querySelector('#viewer');
 const big = box.querySelector('img');
 const pics = [...document.querySelectorAll('a[href$=".webp"]')];
 let at = 0;
@@ -33,3 +33,12 @@ btn.addEventListener('click', async () => {
     note.textContent = '';
   }
 });
+
+// Hire me opens the price list
+const hire = document.querySelector('#hire');
+document.querySelectorAll('[data-hire]').forEach(a => a.addEventListener('click', e => {
+  if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+  e.preventDefault();
+  hire.showModal();
+}));
+hire.addEventListener('click', e => { if (e.target === hire) hire.close(); });

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body id="top">
 
@@ -38,7 +38,7 @@
   <div class="intro">
     <h1>I build Minecraft maps for servers, custom organics, events, and survival-friendly assets.</h1>
     <p>Architecture student. More than a decade of building.</p>
-    <p><a href="#contact">Hire me</a></p>
+    <p><a href="#contact" data-hire>Hire me</a></p>
   </div>
   <div class="index">
     <h2>Selected work</h2>
@@ -262,10 +262,8 @@
     <p class="facts">Organic builds 2023-2026</p>
   </div>
   <div class="row keep">
-    <a href="images/totoro.webp" style="--r:1.461"><img loading="lazy" src="images/totoro-960.webp" width="1189" height="814" alt="Totoro at the bus stop in the rain"></a>
     <a href="images/clown.webp" style="--r:1"><img loading="lazy" src="images/clown.webp" width="600" height="600" alt="Close up of a clown eye, Pennywise"></a>
     <a href="images/banana.webp" style="--r:.681"><img loading="lazy" src="images/banana-960.webp" width="1189" height="1745" alt="Banana Man"></a>
-    <a href="images/patrick.webp" style="--r:.914"><img loading="lazy" src="images/patrick-960.webp" width="1155" height="1263" alt="Patrick Star"></a>
     <a href="images/spongebob.webp" style="--r:.802"><img loading="lazy" src="images/spongebob.webp" width="760" height="948" alt="SpongeBob"></a>
   </div>
 </section>
@@ -306,11 +304,22 @@
   <p class="links"><a href="https://www.behance.net/koiduu">Behance</a> <a href="https://www.pinterest.com/koidubuilds/">Pinterest</a> <a href="#top">Back to top</a></p>
 </footer>
 
-<a class="hire" href="#contact">Hire now</a>
+<a class="hire" href="#contact" data-hire>Hire now</a>
 
-<dialog aria-label="Image">
+<dialog id="viewer" aria-label="Image">
   <form method="dialog"><button>Close</button></form>
   <img alt="">
+</dialog>
+<dialog class="hire-box" id="hire" aria-labelledby="hire-title">
+  <form method="dialog"><button class="x">Close</button></form>
+  <h2 id="hire-title">Hire me</h2>
+  <p class="maint" role="status">Online payment is in maintenance for now. Message me and we can arrange it directly.</p>
+  <ul class="tiers">
+    <li><span class="size">32x32</span><span class="price">$39</span><button type="button" disabled>Payment in maintenance</button></li>
+    <li><span class="size">72x72</span><span class="price">$59</span><button type="button" disabled>Payment in maintenance</button></li>
+    <li><span class="size">128x128</span><span class="price">$89</span><button type="button" disabled>Payment in maintenance</button></li>
+  </ul>
+  <p class="custom"><strong>Custom organic builds:</strong> send me a private message by email <a href="mailto:koidusupport@gmail.com">koidusupport@gmail.com</a> or on Discord (<b>koiduu</b>).</p>
 </dialog>
 <script src="script.js"></script>
 </body>

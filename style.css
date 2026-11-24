@@ -121,12 +121,26 @@ footer { margin-top: var(--between); }
 .links { padding: 22px var(--pad) 96px; display: flex; flex-wrap: wrap; gap: 8px 28px; }
 .links a:last-child { margin-left: auto; }
 
+/* Hire popup */
+.hire-box { border: 0; padding: clamp(24px, 3vw, 40px); width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: #fff; color: #000; margin: auto; }
+.hire-box::backdrop { background: rgba(0, 0, 0, .45); }
+.hire-box h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 600; letter-spacing: -.02em; }
+.hire-box form { position: absolute; top: 12px; right: 12px; }
+.hire-box .x { font: inherit; color: #000; background: none; border: 0; padding: 8px 12px; cursor: pointer; text-decoration: underline; text-underline-offset: .18em; }
+.maint { margin-top: 12px; padding: 10px 14px; background: var(--haze); }
+.tiers { margin-top: 20px; }
+.tiers li { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 16px; padding: 14px 0; border-top: 1px solid #ddd; }
+.tiers .size { font-size: clamp(22px, 1.75vw, 30px); font-weight: 500; }
+.tiers .price { font-size: clamp(22px, 1.75vw, 30px); font-weight: 600; text-align: right; }
+.tiers button { grid-column: 1 / -1; font: inherit; padding: 10px; border: 1px solid #ccc; background: #f3f3f3; color: #777; cursor: not-allowed; }
+.custom { margin-top: 20px; padding-top: 18px; border-top: 1px solid #ddd; }
+
 /* Full size picture */
-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; padding: 0; background: #fff; overflow: hidden; }
-dialog[open] { display: grid; place-items: center; }
-dialog img { width: 100vw; height: 100dvh; object-fit: contain; cursor: zoom-out; }
-dialog form { position: fixed; top: 14px; right: 14px; }
-dialog button { font: inherit; color: #000; background: #fff; border: 0; padding: 8px 14px; cursor: pointer; }
+#viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; padding: 0; background: #fff; overflow: hidden; }
+#viewer[open] { display: grid; place-items: center; }
+#viewer img { width: 100vw; height: 100dvh; object-fit: contain; cursor: zoom-out; }
+#viewer form { position: fixed; top: 14px; right: 14px; }
+#viewer button { font: inherit; color: #000; background: #fff; border: 0; padding: 8px 14px; cursor: pointer; }
 
 @media (max-width: 1080px) {
   .index { width: 31%; }
